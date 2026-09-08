@@ -1,6 +1,6 @@
 # Creator Framework Toolkit — 53-Prompt Companion Pack
 
-53 battle-tested content prompts for creators.
+53 条可复制提示词 for creators.
 Usage: copy a prompt, replace {variables}, paste into any AI chat (or the Toolkit extension).
 
 Quick start:

@@ -1,4 +1,6 @@
-# AI Content Toolkit — Gumroad Product Copy
+# Creator Framework Toolkit — Product Copy
+
+> This file is retained as an internal draft. The current public offer is the fixed-scope Content Sprint on the checkout page.
 
 ## Product Name
 AI Content Toolkit — Chrome Extension + Prompt Pack (Lifetime License)

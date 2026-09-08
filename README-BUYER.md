@@ -20,4 +20,4 @@ The extension itself does **not** call an AI service. It runs locally and combin
 Personal/commercial-use license for one buyer and one teammate. You may use generated drafts commercially. Do not redistribute or resell the extension or prompt pack.
 
 ## Support
-Reply to the Gumroad receipt email. Lifetime updates are included for this purchase.
+Support: open an issue in the repository with your package and niche. Do not post payment details or private credentials in issues.
