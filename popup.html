@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Framework Toolkit</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 380px;
+      min-height: 480px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 16px;
+      text-align: center;
+    }
+    .header h1 { font-size: 16px; font-weight: 700; }
+    .header p { font-size: 11px; opacity: 0.8; margin-top: 2px; }
+    .tabs {
+      display: flex;
+      background: #1a1a2e;
+      border-bottom: 1px solid #2a2a4a;
+    }
+    .tab {
+      flex: 1;
+      padding: 10px 4px;
+      font-size: 11px;
+      text-align: center;
+      cursor: pointer;
+      color: #888;
+      transition: all 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+    .tab.active {
+      color: #667eea;
+      border-bottom-color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+    }
+    .tab:hover { color: #fff; }
+    .tab-icon { font-size: 14px; display: block; margin-bottom: 2px; }
+    .panel { display: none; padding: 14px; }
+    .panel.active { display: block; }
+    .section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #8888cc;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    textarea {
+      width: 100%;
+      background: #1e1e3a;
+      border: 1px solid #2a2a4a;
+      border-radius: 8px;
+      color: #fff;
+      padding: 10px;
+      font-size: 13px;
+      resize: vertical;
+      outline: none;
+      font-family: inherit;
+    }
+    textarea:focus { border-color: #667eea; }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-secondary {
+      background: #2a2a4a;
+      color: #aaa;
+    }
+    .btn-secondary:hover { background: #3a3a5a; color: #fff; }
+    .btn-row { display: flex; gap: 8px; margin-top: 8px; }
+    .btn-row .btn { flex: 1; margin-top: 0; }
+    .output {
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 1.6;
+      max-height: 200px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      display: none;
+    }
+    .output.show { display: block; }
+    .output-label {
+      font-size: 10px;
+      color: #667eea;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .badge-pro {
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+    }
+    .hook-list { margin-top: 8px; }
+    .hook-item {
+      background: #1e1e3a;
+      border: 1px solid #2a2a4a;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 6px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .hook-item:hover {
+      border-color: #667eea;
+      background: #24244a;
+    }
+    .hook-item .hook-num {
+      color: #667eea;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+    .hook-item .hook-type {
+      float: right;
+      font-size: 9px;
+      background: #2a2a4a;
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: #888;
+    }
+    .copy-btn {
+      font-size: 10px;
+      color: #667eea;
+      cursor: pointer;
+      float: right;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .hook-item:hover .copy-btn { opacity: 1; }
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #667eea;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 999;
+    }
+    .toast.show { opacity: 1; }
+    .separator { border: none; border-top: 1px solid #2a2a4a; margin: 12px 0; }
+    .pro-tag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #f093fb22, #f5576c22);
+      border: 1px solid #f093fb44;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-top: 10px;
+      font-size: 11px;
+      color: #f093fb;
+      cursor: pointer;
+    }
+    .pro-tag:hover { background: linear-gradient(135deg, #f093fb33, #f5576c33); }
+    .loading { text-align: center; padding: 20px; color: #667eea; font-size: 12px; }
+    .loading::after {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #667eea44;
+      border-top-color: #667eea;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .seo-score {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: #1e1e3a;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .seo-score-num {
+      font-size: 28px;
+      font-weight: 800;
+      color: #667eea;
+    }
+    .seo-score-label { font-size: 11px; color: #888; }
+    .seo-check { font-size: 11px; padding: 3px 0; display: flex; align-items: center; gap: 6px; }
+    .seo-check.pass { color: #4ade80; }
+    .seo-check.fail { color: #f87171; }
+    .seo-check.warn { color: #fbbf24; }
+    .footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 10px;
+      color: #444;
+      border-top: 1px solid #1a1a2e;
+    }
+    .footer a { color: #667eea; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>✍️ Creator Framework Toolkit</h1>
+    <p>Offline writing frameworks · no API key</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="hooks">
+      <span class="tab-icon">⚡</span>
+      Hooks
+    </div>
+    <div class="tab" data-tab="linkedin">
+      <span class="tab-icon">💼</span>
+      LinkedIn
+    </div>
+    <div class="tab" data-tab="twitter">
+      <span class="tab-icon">🐦</span>
+      Thread
+    </div>
+    <div class="tab" data-tab="seo">
+      <span class="tab-icon">🔍</span>
+      Content Check
+    </div>
+  </div>
+
+  <!-- HOOKS PANEL -->
+  <div class="panel active" id="panel-hooks">
+    <div class="section-title">Enter your topic or draft <span class="badge">OFFLINE</span></div>
+    <textarea id="hook-input" rows="3" placeholder="e.g. How to build a SaaS in 30 days"></textarea>
+    <button class="btn btn-primary" onclick="generateHooks()">⚡ Generate Hooks</button>
+    <div class="output" id="hook-output">
+      <div class="output-label">Generated Hooks</div>
+      <div id="hook-results" class="hook-list"></div>
+    </div>
+    <hr class="separator">
+    <div class="section-title">Quick Prompts</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">
+      <span class="hook-item" onclick="setInput('hook-input','Why everyone is wrong about remote work')" style="flex:1;min-width:45%;padding:6px 8px;">Why everyone is wrong about remote work</span>
+      <span class="hook-item" onclick="setInput('hook-input','I built a $10k/mo SaaS in my garage')" style="flex:1;min-width:45%;padding:6px 8px;">I built a $10k/mo SaaS in my garage</span>
+      <span class="hook-item" onclick="setInput('hook-input','The brutal truth about AI in 2026')" style="flex:1;min-width:45%;padding:6px 8px;">The brutal truth about AI in 2026</span>
+      <span class="hook-item" onclick="setInput('hook-input','Stop grinding. Start building systems.')" style="flex:1;min-width:45%;padding:6px 8px;">Stop grinding. Start building systems.</span>
+    </div>
+  </div>
+
+  <!-- LINKEDIN PANEL -->
+  <div class="panel" id="panel-linkedin">
+    <div class="section-title">Post Topic</div>
+    <textarea id="li-input" rows="3" placeholder="e.g. I just got promoted to VP of Engineering"></textarea>
+    <button class="btn btn-primary" onclick="generateLinkedIn()">💼 Generate LinkedIn Post</button>
+    <div class="output" id="li-output">
+      <div class="output-label">LinkedIn Post</div>
+      <div id="li-results"></div>
+    </div>
+    <hr class="separator">
+    <div class="section-title">Tone</div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="setLiTone('professional')">Professional</button>
+      <button class="btn btn-secondary" onclick="setLiTone('conversational')">Conversational</button>
+      <button class="btn btn-secondary" onclick="setLiTone('controversial')">Controversial</button>
+    </div>
+  </div>
+
+  <!-- TWITTER THREAD PANEL -->
+  <div class="panel" id="panel-twitter">
+    <div class="section-title">Thread Topic</div>
+    <textarea id="thread-input" rows="3" placeholder="e.g. How I made $50k in my first year freelancing"></textarea>
+    <button class="btn btn-primary" onclick="generateThread()">🧵 Generate Thread</button>
+    <div class="output" id="thread-output">
+      <div class="output-label">Twitter Thread</div>
+      <div id="thread-results"></div>
+    </div>
+  </div>
+
+  <!-- SEO PANEL -->
+  <div class="panel" id="panel-seo">
+    <div class="section-title">Paste Content</div>
+    <textarea id="seo-input" rows="3" placeholder="Paste text to check readability, length, structure, links, and keyword repetition"></textarea>
+    <button class="btn btn-primary" onclick="analyzeSEO()">📊 Check Content</button>
+    <div class="output" id="seo-output" style="display:none;"></div>
+  </div>
+
+  <div class="footer">
+    Frameworks produce editable drafts. Verify all claims before publishing.<br>
+    Runs locally · no account required
+  </div>
+
+  <div class="toast" id="toast">Copied!</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

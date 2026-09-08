@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Creator Framework Toolkit",
+  "version": "1.1.0",
+  "description": "Offline writing frameworks for hooks, LinkedIn posts, threads, and content analysis. No API key required.",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Creator Framework Toolkit"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

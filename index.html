@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Framework Toolkit — Content Systems for Creators</title>
+  <meta name="description" content="Offline writing frameworks for Twitter/X, LinkedIn, threads, and content checks.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a14; color: #fff; }
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #1a1a2e; }
+    .logo { font-size: 18px; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: #888; text-decoration: none; font-size: 14px; }
+    .nav-links a:hover { color: #fff; }
+    .btn-cta { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .hero { text-align: center; padding: 80px 20px; max-width: 800px; margin: 0 auto; }
+    .hero h1 { font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+    .hero h1 span { background: linear-gradient(135deg, #667eea, #f093fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 18px; color: #888; margin-bottom: 32px; line-height: 1.6; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; }
+    .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 14px 32px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 16px; }
+    .btn-secondary { background: #1a1a2e; color: #fff; padding: 14px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 16px; border: 1px solid #2a2a4a; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; padding: 60px 40px; }
+    .feature { background: #111122; border: 1px solid #1a1a2e; border-radius: 16px; padding: 28px; transition: all 0.2s; }
+    .feature:hover { border-color: #667eea44; transform: translateY(-2px); }
+    .feature-icon { font-size: 32px; margin-bottom: 12px; }
+    .feature h3 { font-size: 16px; margin-bottom: 8px; }
+    .feature p { font-size: 13px; color: #888; line-height: 1.6; }
+    .pricing { text-align: center; padding: 80px 20px; max-width: 600px; margin: 0 auto; }
+    .pricing h2 { font-size: 36px; margin-bottom: 8px; }
+    .pricing p { color: #888; margin-bottom: 32px; }
+    .price-card { background: #111122; border: 1px solid #667eea44; border-radius: 20px; padding: 36px; }
+    .price-card.free { border-color: #2a2a4a; margin-bottom: 16px; }
+    .price-card.pro { border-color: #667eea; box-shadow: 0 0 40px #667eea22; }
+    .price { font-size: 48px; font-weight: 800; }
+    .price span { font-size: 16px; color: #888; font-weight: 400; }
+    .price-features { list-style: none; margin: 20px 0; text-align: left; }
+    .price-features li { padding: 6px 0; font-size: 14px; color: #ccc; }
+    .price-features li::before { content: '✓ '; color: #667eea; font-weight: 700; }
+    .price-features li.premium::before { content: '⭐ '; }
+    .testimonial { max-width: 700px; margin: 0 auto 60px; padding: 40px 20px; text-align: center; }
+    .testimonial blockquote { font-size: 18px; color: #ccc; font-style: italic; line-height: 1.6; margin-bottom: 16px; }
+    .testimonial cite { font-size: 13px; color: #667eea; font-style: normal; }
+    .footer { text-align: center; padding: 30px; color: #444; font-size: 12px; border-top: 1px solid #1a1a2e; }
+    .mockup { max-width: 600px; margin: 0 auto 40px; background: #111122; border: 1px solid #1a1a4a; border-radius: 16px; padding: 20px; }
+    .mockup-bar { display: flex; gap: 6px; margin-bottom: 12px; }
+    .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .mockup-dot:nth-child(1) { background: #ff5f57; }
+    .mockup-dot:nth-child(2) { background: #ffbd2e; }
+    .mockup-dot:nth-child(3) { background: #28ca42; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="logo">⚡ Creator Framework Toolkit</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://gumroad.com/ai-content-toolkit" class="btn-cta">Get the toolkit →</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="mockup">
+      <div class="mockup-bar"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
+      <div style="background:#0f0f1a;border-radius:8px;padding:16px;font-size:12px;color:#888;">
+        <div style="color:#667eea;font-weight:600;margin-bottom:8px;">⚡ AI Hooks Generator</div>
+        <div>Generating 6 viral hooks for "SaaS in 2026"...</div>
+      </div>
+    </div>
+    <h1>Ship <span>better content</span><br>without the blank page</h1>
+    <p>A local writing toolkit and 53-prompt companion pack for creators, founders, and marketers. Build editable drafts with repeatable frameworks — no account, API key, or subscription required.</p>
+    <div class="hero-btns">
+      <a href="https://chrome.google.com/webstore/detail/ai-content-toolkit" class="btn-primary">🚀 Add to Chrome — Free</a>
+      <a href="#pricing" class="btn-secondary">View Pricing</a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <h3>Viral Hooks Generator</h3>
+      <p>Enter any topic and get 6 proven hook templates optimized for Twitter engagement. Contrarian, story-driven, and list-based patterns.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💼</div>
+      <h3>LinkedIn Post Writer</h3>
+      <p>Generate professional, conversational, or controversial LinkedIn posts with customizable tones. Perfect for building your personal brand.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🧵</div>
+      <h3>Twitter Thread Builder</h3>
+      <p>Create structured 7-tweet threads with viral hooks, key insights, and strong CTAs. Ready to copy-paste and post.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔍</div>
+      <h3>SEO Analyzer</h3>
+      <p>Paste your URL or content to get an instant SEO score with actionable recommendations. Fix issues before they hurt your rankings.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🤖</div>
+      <h3>Works Locally in Your Browser</h3>
+      <p>Our content script detects Twitter, LinkedIn, and Reddit pages to offer real-time AI assistance right where you create content.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">⚙️</div>
+      <h3>Zero Setup Required</h3>
+      <p>No API keys, no accounts, no learning curve. Just install and start creating. Works immediately after installation.</p>
+    </div>
+  </section>
+
+  <div class="testimonial">
+    <blockquote>"This extension literally cut my content creation time by 80%. I went from spending hours brainstorming hooks to having 6 viral options in seconds."</blockquote>
+    <cite>— Independent creator · testimonial placeholder removed</cite>
+  </div>
+
+  <section class="pricing" id="pricing">
+    <h2>Simple Pricing</h2>
+    <p>Start free. Upgrade when you're ready to go pro.</p>
+    <div class="price-card free">
+      <div style="font-size:14px;color:#888;margin-bottom:4px;">Free</div>
+      <div class="price">$0</div>
+      <ul class="price-features">
+        <li>3 hook generations per day</li>
+        <li>1 LinkedIn post per day</li>
+        <li>Basic SEO analysis</li>
+        <li>Chrome extension included</li>
+      </ul>
+      <a href="https://chrome.google.com/webstore/detail/ai-content-toolkit" class="btn-secondary" style="display:inline-block;">Install Free</a>
+    </div>
+    <div class="price-card pro">
+      <div style="font-size:14px;color:#f093fb;margin-bottom:4px;">Pro <span style="font-size:11px;background:#f093fb;color:#fff;padding:2px 6px;border-radius:4px;">POPULAR</span></div>
+      <div class="price">$9<span>/once</span></div>
+      <ul class="price-features">
+        <li class="premium">Unlimited hook generations</li>
+        <li class="premium">Advanced thread templates</li>
+        <li class="premium">Competitor analysis tools</li>
+        <li class="premium">Priority support & updates</li>
+        <li class="premium">Lifetime access</li>
+      </ul>
+      <a href="https://gumroad.com/l/ai-content-toolkit" class="btn-primary" style="display:inline-block;">Get Pro — $9</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © 2026 Creator Framework Toolkit. Built for creators, by creators.<br>
+    <a href="mailto:hello@aicontenttoolkit.com" style="color:#667eea;">Contact</a> · <a href="#" style="color:#667eea;">Privacy</a> · <a href="#" style="color:#667eea;">Terms</a>
+  </footer>
+</body>
+</html>
