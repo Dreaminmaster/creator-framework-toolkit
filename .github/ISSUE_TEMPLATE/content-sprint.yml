@@ -1,0 +1,49 @@
+name: Request a Content Sprint
+about: Request a sample or fixed-scope content package
+labels: [customer-request]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include private keys, seed phrases, bank details, or sensitive personal data.
+  - type: input
+    id: package
+    attributes:
+      label: Package
+      description: Hook Pack ($19), Launch Pack ($49), or Content System ($99)
+      placeholder: Launch Pack
+    validations:
+      required: true
+  - type: input
+    id: niche
+    attributes:
+      label: Topic / niche
+      placeholder: Indie app for remote teams
+    validations:
+      required: true
+  - type: textarea
+    id: audience
+    attributes:
+      label: Audience and desired outcome
+      placeholder: Who is this for and what should the content help them understand?
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples and tone
+      description: Optional links or a short description of the tone you want
+  - type: input
+    id: contact
+    attributes:
+      label: Delivery email or preferred contact
+      description: Use an email you control. Never post payment credentials here.
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Confirmation
+      options:
+        - label: I understand this is an editable content draft, not a guarantee of reach, sales, or income.
+          required: true
