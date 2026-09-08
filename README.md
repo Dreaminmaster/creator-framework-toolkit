@@ -25,3 +25,8 @@ Contact: open an issue in this repository with your preferred package and niche.
 
 ## License
 The included extension and prompt pack are for personal/commercial use by the purchaser. Redistribution is not allowed.
+
+
+## Direct checkout
+
+[Creator Content Sprint checkout](https://dreaminmaster.github.io/creator-framework-toolkit/checkout.html)
